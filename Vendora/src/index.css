@@ -1,0 +1,191 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --font-sans: var(--app-font-sans);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --background: 270 60% 98%;
+  --foreground: 270 40% 10%;
+  --border: 270 30% 88%;
+  --input: 270 30% 88%;
+  --ring: 270 70% 35%;
+  --card: 0 0% 100%;
+  --card-foreground: 270 40% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 270 40% 10%;
+  --primary: 270 80% 30%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 270 30% 92%;
+  --secondary-foreground: 270 40% 20%;
+  --muted: 270 20% 94%;
+  --muted-foreground: 270 15% 50%;
+  --accent: 43 80% 46%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --app-font-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border box-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+/* Custom Vendora styles */
+.vendora-gradient {
+  background: linear-gradient(135deg, #2D0860 0%, #4A0E8F 50%, #6B21A8 100%);
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #D4A017, #F5C842, #D4A017);
+}
+
+.hero-pattern {
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(212, 160, 23, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(107, 33, 168, 0.3) 0%, transparent 50%),
+    linear-gradient(135deg, #2D0860 0%, #4A0E8F 60%, #5B1A9E 100%);
+}
+
+.vendor-card-hover {
+  transition: all 0.3s ease;
+}
+.vendor-card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(74, 14, 143, 0.2);
+}
+
+.product-card-hover {
+  transition: all 0.3s ease;
+}
+.product-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(74, 14, 143, 0.15);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #4A0E8F, #6B21A8);
+  color: white;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #2D0860, #4A0E8F);
+  box-shadow: 0 8px 20px rgba(74, 14, 143, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #D4A017, #F5C842);
+  color: #1A1A2E;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+.btn-gold:hover {
+  box-shadow: 0 8px 20px rgba(212, 160, 23, 0.4);
+  transform: translateY(-2px);
+}
+
+.nav-link {
+  position: relative;
+  transition: color 0.2s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #D4A017;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.star-filled {
+  color: #D4A017;
+}
+
+.category-pill {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.category-pill:hover,
+.category-pill.active {
+  background: linear-gradient(135deg, #4A0E8F, #6B21A8);
+  color: white;
+  box-shadow: 0 4px 12px rgba(74, 14, 143, 0.3);
+}
+
+.section-title {
+  position: relative;
+  display: inline-block;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(135deg, #D4A017, #F5C842);
+  border-radius: 2px;
+}
+
+.badge-verified {
+  background: linear-gradient(135deg, #D4A017, #F5C842);
+  color: #1A1A2E;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #4A0E8F !important;
+  box-shadow: 0 0 0 3px rgba(74, 14, 143, 0.15);
+}
+
+.hamburger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem !important;
+  }
+}
