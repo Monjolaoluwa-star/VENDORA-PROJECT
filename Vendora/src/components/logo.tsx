@@ -6,7 +6,7 @@ export default function Logo() {
       src={LogoImage}
       alt="Vendora Logo"
       style={{
-        height: "40px",
+        height: "45px",
         width: "auto",
         objectFit: "contain",
       }}

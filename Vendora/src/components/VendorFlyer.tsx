@@ -1,82 +1,63 @@
+import { useRef } from "react";
+
 export default function VendorFlyer() {
+  const flyerRef = useRef<HTMLDivElement>(null);
 
-return (
+  const downloadFlyer = () => {
+    const element = flyerRef.current;
+    if (!element) return;
 
-<div className="flyer">
+    const printWindow = window.open("", "", "width=800,height=600");
+    if (!printWindow) return;
 
-<div className="flyer-header">
+    printWindow.document.write(`
+      <html>
+        <head>
+          <title>Vendora Flyer</title>
+          <style>
+            body { font-family: Arial; padding: 20px; }
+            .box { border: 3px solid #4A0E8F; padding: 20px; border-radius: 20px; }
+            h1 { color: #4A0E8F; }
+          </style>
+        </head>
+        <body>
+          ${element.innerHTML}
+        </body>
+      </html>
+    `);
 
-<div className="logo">
-<div className="logo-icon">V</div>
-<h2>VENDORA</h2>
-</div>
+    printWindow.document.close();
+    printWindow.print();
+  };
 
-<div className="badge">
-🔥 Limited Slots
-</div>
+  return (
+    <div style={{ padding: "40px" }}>
+      <div ref={flyerRef} className="box">
+        <h1>🔥 VENdORA VENDOR INVITATION</h1>
+        <p>Join Lagos fastest growing fashion marketplace</p>
+        <ul>
+          <li>✔ Verified Vendor Store</li>
+          <li>✔ WhatsApp Direct Buyers</li>
+          <li>✔ Unlimited Product Listings</li>
+          <li>✔ Featured Visibility</li>
+        </ul>
 
-</div>
+        <h2>Early Bird: ₦5,000/month</h2>
+        <p>Limited slots available</p>
+      </div>
 
-
-<h1>
-Sell Your Fashion
-<br/>
-to <span>Lagos</span> Buyers.
-<br/>
-Get Listed Today.
-</h1>
-
-
-<p>
-Join Vendora — Lagos' fastest-growing fashion marketplace.
-Reach thousands of buyers ready to shop your store.
-</p>
-
-
-<div className="plans">
-
-<div className="plan gold">
-<h3>Early Bird</h3>
-<h2>₦5,000</h2>
-<p>/month</p>
-</div>
-
-
-<div className="plan">
-<h3>Standard</h3>
-<h2>₦8,000</h2>
-<p>/month</p>
-</div>
-
-
-</div>
-
-
-<ul>
-
-<li>✓ Your own store page</li>
-<li>✓ Unlimited products</li>
-<li>✓ Direct WhatsApp buyers</li>
-<li>✓ Verified store badge</li>
-
-</ul>
-
-
-<div className="contact">
-
-<h3>
-WhatsApp Us To Apply
-</h3>
-
-<p>
-08026570746
-</p>
-
-</div>
-
-
-</div>
-
-)
-
+      <button
+        onClick={downloadFlyer}
+        style={{
+          marginTop: "20px",
+          padding: "10px 20px",
+          background: "#4A0E8F",
+          color: "white",
+          borderRadius: "10px",
+        }}
+      >
+        Download Flyer
+      </button>
+    </div>
+  );
 }
